@@ -9,6 +9,9 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
+        
+        @ObservedObject var viewModel = HomeViewModel()
+        
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
                 
@@ -19,7 +22,7 @@ struct HomeView: View {
                 Divider()
                 
                 // ALL COINS VIEW
-                
+                AllCoinsView()
             }
             .navigationTitle("Live Prices")
         }

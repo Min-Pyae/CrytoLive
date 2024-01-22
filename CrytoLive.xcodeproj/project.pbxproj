@@ -16,6 +16,8 @@
 		F11D30AA2B5A9D9B00712DCC /* TopMoversItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11D30A92B5A9D9B00712DCC /* TopMoversItemView.swift */; };
 		F11D30AF2B5AA25300712DCC /* AllCoinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11D30AE2B5AA25300712DCC /* AllCoinsView.swift */; };
 		F11D30B12B5AA26C00712DCC /* AllCoinsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11D30B02B5AA26C00712DCC /* AllCoinsRowView.swift */; };
+		F13582F42B5E965000800E1B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13582F32B5E965000800E1B /* HomeViewModel.swift */; };
+		F13582F62B5E99DE00800E1B /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13582F52B5E99DE00800E1B /* Coin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		F11D30A92B5A9D9B00712DCC /* TopMoversItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMoversItemView.swift; sourceTree = "<group>"; };
 		F11D30AE2B5AA25300712DCC /* AllCoinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCoinsView.swift; sourceTree = "<group>"; };
 		F11D30B02B5AA26C00712DCC /* AllCoinsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCoinsRowView.swift; sourceTree = "<group>"; };
+		F13582F32B5E965000800E1B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		F13582F52B5E99DE00800E1B /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 		F11D30A22B5A994500712DCC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F13582F52B5E99DE00800E1B /* Coin.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -116,6 +121,7 @@
 		F11D30A42B5A994900712DCC /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				F13582F32B5E965000800E1B /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -208,9 +214,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F13582F62B5E99DE00800E1B /* Coin.swift in Sources */,
 				F11D30A82B5A9D8E00712DCC /* TopMoversView.swift in Sources */,
 				F11D30AF2B5AA25300712DCC /* AllCoinsView.swift in Sources */,
 				F11D30A62B5A9AB900712DCC /* HomeView.swift in Sources */,
+				F13582F42B5E965000800E1B /* HomeViewModel.swift in Sources */,
 				F11D30942B5A991000712DCC /* ContentView.swift in Sources */,
 				F11D30922B5A991000712DCC /* CrytoLiveApp.swift in Sources */,
 				F11D30AA2B5A9D9B00712DCC /* TopMoversItemView.swift in Sources */,
