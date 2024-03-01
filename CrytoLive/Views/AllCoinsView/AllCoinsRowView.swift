@@ -44,16 +44,20 @@ struct AllCoinsRowView: View {
             
             // PRICE INFO
             VStack(alignment: .trailing) {
-                Text("$ \(coin.current_price)")
+                Text(coin.current_price.toCurrencyString())
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .padding(.leading, 4)
                 
-                Text("\(coin.price_change_percentage_24h_in_currency)%")
-                    .font(.caption)
-                    .foregroundStyle(Color(.red))
-                    .fontWeight(.semibold)
-                    .padding(.leading, 5)
+                Text(
+                    coin.price_change_percentage_24h_in_currency > 0
+                    ? "+" + coin.price_change_percentage_24h_in_currency.toPercentageString()
+                    : coin.price_change_percentage_24h_in_currency.toPercentageString()
+                )
+                .font(.caption)
+                .foregroundStyle(coin.price_change_percentage_24h_in_currency > 0 ? .green : .red)
+                .fontWeight(.semibold)
+                .padding(.leading, 5)
             }
         }
         .padding(.horizontal)

@@ -27,13 +27,13 @@ struct TopMoversItemView: View {
                     .font(.caption)
                     .bold()
                 
-                Text("$\(coin.current_price)")
+                Text(coin.current_price.toCurrencyString())
                     .font(.caption)
                     .foregroundStyle(Color(.gray))
             }
             
             // COIN PERCENT CHANGE
-            Text("+ \(coin.price_change_percentage_24h_in_currency)%")
+            Text("+" + coin.price_change_percentage_24h_in_currency.toPercentageString())
                 .font(.title2)
                 .foregroundStyle(Color(.green))
         }

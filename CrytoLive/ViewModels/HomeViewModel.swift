@@ -27,20 +27,21 @@ class HomeViewModel: ObservableObject {
             }
             
             if let response = response as? HTTPURLResponse {
-                print(response.statusCode)
+                print("Status Code: \(response.statusCode)")
             }
             
-            guard let data = data else { return }
-            
-            do {
-                let coins = try JSONDecoder().decode([Coin].self, from: data)
-                DispatchQueue.main.async {
-                    self.coins = coins
-                    self.fetchTopMoversCoins()
+            if let data = data {
+                do {
+                    let coins = try JSONDecoder().decode([Coin].self, from: data)
+                    DispatchQueue.main.async {
+                        self.coins = coins
+                        self.fetchTopMoversCoins()
+                    }
+                } catch let error {
+                    print("ERROR: \(error)")
                 }
-            } catch let error {
-                print("Error: \(error)")
             }
+            
         }
         .resume()
     }
@@ -50,7 +51,7 @@ class HomeViewModel: ObservableObject {
             $0.price_change_percentage_24h_in_currency > $1.price_change_percentage_24h_in_currency
         }
         
-        self.topMoversCoins = Array(topMovers.prefix(5))
+        self.topMoversCoins = Array(topMovers.prefix(7))
         
     }
     
