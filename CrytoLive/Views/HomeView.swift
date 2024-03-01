@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject var viewModel = HomeViewModel()
+    @ObservedObject var viewModel = HomeViewModel()
     
     var body: some View {
         
@@ -16,7 +16,7 @@ struct HomeView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 
                 // TOP MOVERS VIEW
-                TopMoversView()
+                TopMoversView(viewModel: viewModel)
                 
                 // DIVIDER
                 Divider()
