@@ -38,6 +38,7 @@ struct TopMoversItemView: View {
                 .foregroundStyle(Color(.green))
         }
         .frame(width: 140, height: 140)
+        .background(Color("TopMoversItemBackground"))
         .overlay {
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color(.systemGray4) ,lineWidth: 2)
