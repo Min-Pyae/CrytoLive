@@ -8,26 +8,50 @@
 import Foundation
 
 class HomeViewModel: ObservableObject {
-    
     @Published var coins = [Coin]()
+    @Published var topMoversCoins = [Coin]()
     
-    func fetchData() {
-        let urlString = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=24h&locale=en"
+    init() {
+        fetchCoinData()
+    }
+    
+    func fetchCoinData() {
+        let urlString = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=24h"
         
-        if let url = URL(string: urlString) {
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                if error != nil {
-                    print("ERROR: \(error?.localizedDescription ?? "")")
-                    return
-                } else if data != nil {
-                    //print(String(data: data!, encoding: .utf8) ?? "")
-                    if let decodedData = try? JSONDecoder().decode([Coin].self, from: data!) {
-                        self.coins = decodedData
-                    }
-                }
+        guard let url = URL(string: urlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                print("ERROR: \(error.localizedDescription)")
+                return
             }
-            .resume()
+            
+            if let response = response as? HTTPURLResponse {
+                print(response.statusCode)
+            }
+            
+            guard let data = data else { return }
+            
+            do {
+                let coins = try JSONDecoder().decode([Coin].self, from: data)
+                DispatchQueue.main.async {
+                    self.coins = coins
+                    self.fetchTopMoversCoins()
+                }
+            } catch let error {
+                print("Error: \(error)")
+            }
         }
+        .resume()
+    }
+    
+    func fetchTopMoversCoins() {
+        let topMovers = coins.sorted {
+            $0.price_change_percentage_24h_in_currency > $1.price_change_percentage_24h_in_currency
+        }
+        
+        self.topMoversCoins = Array(topMovers.prefix(5))
+        
     }
     
 }
